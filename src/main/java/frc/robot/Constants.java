@@ -11,6 +11,10 @@ public final class Constants {
         public static final double DRIVE_DEADBAND = 0.05;
     }
 
+    public static final class OtherMotorConstants {
+        public static final int LIFT = 5;
+    }
+
     public static final class OIConstants {
         public static final int DRIVER_CONTROLLER_PORT = 0;
     }

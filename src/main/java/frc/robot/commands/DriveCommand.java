@@ -30,15 +30,22 @@ public class DriveCommand extends Command {
 
         // deadband
         if (Math.abs(leftY) < DriveConstants.DRIVE_DEADBAND) leftY = 0;
-        if (Math.abs(rightY) < DriveConstants.DRIVE_DEADBAND) rightX = 0;
+        if (Math.abs(rightX) < DriveConstants.DRIVE_DEADBAND) rightX = 0;
 
+        if (Math.abs(leftY) > 0.1) {
+            drive.driveFwdBck(leftY*DRIVE_MULTIPLIER);
+        } else if (Math.abs(rightX) > 0.1) {
+            drive.driveTurn(-1*rightX*DRIVE_MULTIPLIER);
+        }
+        else{
+            drive.stopAllMotors();
+        }
         
-        //drive.tankDrive(-1*(leftY-rightX), leftY-rightX);
-        drive.tankDrive(leftY*DRIVE_MULTIPLIER, rightY*DRIVE_MULTIPLIER);
     }
 
     @Override
     public void end(boolean interrupted) {
-        drive.tankDrive(0, 0);
+        drive.driveFwdBck(0);
+        drive.driveTurn(0);
     }
 }

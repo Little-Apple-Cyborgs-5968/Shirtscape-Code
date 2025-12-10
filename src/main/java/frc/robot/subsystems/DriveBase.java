@@ -19,6 +19,7 @@ public class DriveBase extends SubsystemBase {
         
     }
 
+    /*
     public void tankDrive(double leftSpeed, double rightSpeed) {
         // manally set all motors
         leftFront.set(-1*leftSpeed);
@@ -27,4 +28,32 @@ public class DriveBase extends SubsystemBase {
         rightFront.set(rightSpeed);
         rightBack.set(rightSpeed);
     }
+    */
+
+    //double speed double rotation
+
+
+
+    public void driveFwdBck(double speed) {
+        leftFront.set(-1*speed);
+        leftBack.set(speed);
+
+        rightFront.set(speed);
+        rightBack.set(speed);
+    }
+
+    public void driveTurn(double speed) {
+        leftFront.set(-1*speed);
+        leftBack.set(speed);
+
+        rightFront.set(-1*speed);
+        rightBack.set(-1*speed);
+    }
+    public void stopAllMotors() {
+        leftFront.set(0);
+        leftBack.set(0);
+        rightFront.set(0);
+        rightBack.set(0);
+    }
+
 }
